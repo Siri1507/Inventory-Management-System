@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Records</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='select.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Records</h1>
+        <form action="{{ url_for('select') }}" method="post">
+            <label for="table_name">Table Name:</label>
+            <select name="table_name" id="table_name">
+                <option value="brands">Brands</option>
+                <option value="inv_user">Users</option>
+                <option value="categories">Categories</option>
+                <option value="customer_cart">Customer Cart</option>
+                <option value="select_product">Select Product</option>
+                <option value="transactions">Transactions</option>
+                <option value="invoice">Invoice</option>
+                <option value="product">Product</option>
+                <option value="stores">Stores</option>
+                <option value="provides">Provides</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Select">
+        </form>
+        <br>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+        <br><br>
+        {% if records %}
+        <h2>Records:</h2>
+        <ul>
+            {% for record in records %}
+            <li>{{ record }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

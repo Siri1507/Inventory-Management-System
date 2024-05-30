@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Record</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='insert.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Insert Record</h1>
+        <form action="{{ url_for('insert') }}" method="post">
+            <label for="table_name">Table Name:</label>
+            <select name="table_name" id="table_name">
+                <option value="brands">brands (bid, bname)</option>
+                <option value="inv_user">inv_user (user_id, user_name, user_password, last_login, user_type)</option>
+                <option value="categories">categories (cid, category_name)</option>
+                <option value="customer_cart">customer_cart (cust_id, user_name, mobno)</option>
+                <option value="select_product">select_product (cust_id, pid, quantity)</option>
+                <option value="transactions">transactions (tid, total_amount, paid, due, gst, discount, payment_method, cart_id)</option>
+                <option value="invoice">invoice (item_no, product_name, quantity, net_price, transaction_id)</option>
+                <option value="product">product (pid, cid, bid, sid, pname, p_stock, price, added_date)</option>
+                <option value="stores">stores (sid, sname, address, mobno)</option>
+                <option value="provides">provides (bid, sid, discount)</option>
+            </select>
+            <br><br>
+            <label for="values">Values (comma separated):</label>
+            <input type="text" name="values" id="values" placeholder="Enter values as per the selected table format">
+            <br><br>
+            <input type="submit" value="Insert">
+        </form>
+        <br>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>
